@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% with value="영어"%}
+<input type="button" value={{value}} onclick="return change(this);" />
+
+<script type="text/javascript">
+function change(el)
+{
+    if ( el.value === "영어" )
+        el.value = "한국어";
+    else
+        el.value = "영어";
+}
+</script>
+{% endwith %}
+</body>
+</html>

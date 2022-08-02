@@ -5,14 +5,59 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
+{% with value="영어"%}
 
-<button onClick="myFunction()">테스트</button>
+<!--<button onClick="ab()">테스트</button>-->
 
-<p id="demo"></p>
 
-<p>어기야 디어 라챠</p>
 
-<script src='{% static "js/event.js" %}'></script>
+
+
+
+<form method="POST" action="{% url 'event' %}">
+    {% csrf_token %}
+    <input type="button" id="btn" value={{value}} onclick="show_eng();" />
+</form>
+<div id="div_id"></div>
+<script>
+    function show_eng(){
+    var input_val = document.getElementById("btn").value
+
+    $.ajax({
+        url: 'show_eng',
+        type: 'GET',
+        data: {
+            'input_val':input_val
+        },
+        datatype: 'json', // 서버에서 반환되는 데이터 json 형식
+        success: function(data){
+            document.all('btn').value=data['eng'];
+        }
+    });
+}
+</script>
+{% endwith %}
+
+<!--<button id="btn" onclick="show_eng()" value="En">영어</button>-->
+
+<!--<div id="demo"></div>-->
+<!--<p id="demo"></p>-->
+<!--<p id="demo2">3</p>-->
+
+
+<!--<p>어기야 디어 라챠</p>-->
+<!--<input type="button" value={{value}} onclick="return change(this);" />-->
+
+<!--<script type="text/javascript">-->
+<!--function change(el)-->
+<!--{-->
+<!--    if ( el.value === "영어" )-->
+<!--        el.value = "한국어";-->
+<!--    else-->
+<!--        el.value = "영어";-->
+<!--}-->
+<!--</script>-->
 
 </body>
+<!--<script type="text/javascript" src='{% static "js/event.js" %}'></script>-->
 </html>
