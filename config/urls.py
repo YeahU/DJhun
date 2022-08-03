@@ -25,4 +25,5 @@ urlpatterns = [
     path('event/show_eng', views.show_eng),
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
+    path('google/', include('allauth.urls')),
 ]

@@ -1,3 +1,4 @@
+{% load socialaccount %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,5 +19,7 @@ function change(el)
 }
 </script>
 {% endwith %}
+
+<a href="{% provider_login_url 'google' %}">구글 로그인</a><br>
 </body>
 </html>
